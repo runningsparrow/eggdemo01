@@ -7,7 +7,12 @@ class NewsController extends Controller {
     // const { ctx } = this;
     // ctx.body = 'hi, egg';
 
-    this.ctx.body = "新闻页面";
+    // this.ctx.body = "新闻页面1";
+
+    //换成使用 html 渲染页面
+    //注意需要使用同步方式渲染页面
+      await this.ctx.render('news.html');
+      
   }
 
   async content() {

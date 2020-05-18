@@ -15,4 +15,7 @@ module.exports = app => {
 
   router.get('/newscontent', controller.news.content);
 
+
+  router.get('/script',controller.script.index)
+
 };
