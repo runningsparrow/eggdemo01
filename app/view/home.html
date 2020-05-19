@@ -11,10 +11,21 @@
     <div>
 
         <!-- <%=msg%> -->
+        <!-- <%=doconfigall%> -->
+        <!-- <%=doconfigall.doconfigall%> -->
         <ul>
-            <%for(var i=0;i<doconfigall.length;i++){%>
-                <li><%=doconfigall[i]%></li>
+            <%for(var i=0;i<doconfigall.doconfigall.length;i++){%>
+                <li><%=doconfigall.doconfigall[i].doc_id%></li>
+                <li><%=doconfigall.doconfigall[i].doc_name%></li>
+                <li><%=doconfigall.doconfigall[i].doc_template%></li>
+                <li><%=doconfigall.doconfigall[i].doc_outpath%></li>
+                <li><%=doconfigall.doconfigall[i].doc_label_text%></li>
+                <li><%=doconfigall.doconfigall[i].doc_image_dir%></li>
+                <li><%=doconfigall.doconfigall[i].doc_excel%></li>
+                <li><%=doconfigall.doconfigall[i].doc_rmrk%></li>
             <%}%>
+
+           
         </ul>
         
 
