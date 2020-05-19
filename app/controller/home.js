@@ -11,7 +11,12 @@ class HomeController extends Controller {
 
 
     var para = "ddddddd"
-    var workerProcess = await child_process.exec('python I:/workspace1/python/docmake/src/docquery.py '+para, 
+    var ppath = 'python '+this.app.pythonpath+'docquery.py '
+    console.log("============")
+    console.log(ppath)
+
+
+    var workerProcess = await child_process.exec(ppath+para, 
       function (error, stdout, stderr) {
       if (error) {
           console.log("debug")

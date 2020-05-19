@@ -50,11 +50,15 @@ module.exports = appInfo => {
     agent: false,
   };
 
+  
 
 
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
+
+    pythonpath: "D:/workspace/python/docmake/src/",
+    
 
   };
 
