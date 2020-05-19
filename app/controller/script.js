@@ -16,23 +16,34 @@ class ScriptController extends Controller {
 
       //ref https://www.jianshu.com/p/b1dc42c152ab
 
-      
+
       var para = "ddddddd"
       var workerProcess = await child_process.exec('python I:/workspace1/python/docmake/src/docmaker.py '+para, 
         function (error, stdout, stderr) {
         if (error) {
             console.log("debug")
-            console.log(error.stack);
-            console.log('Error code: '+error.code);
-            console.log('Signal received: '+error.signal);
+            // console.log(error.stack);
+            // console.log('Error code: '+error.code);
+            // console.log('Signal received: '+error.signal);
         }
-        console.log('stdout: ' + stdout);
-        console.log('stderr: ' + stderr);
+        console.log("========before stdouit============")
+        console.log(stdout);
+        // var returndata = stdout.split("\r\n")
+        var returndata = stdout
+        console.log("========after stdouit============")
+        // console.log('stderr: ' + stderr);
+        console.log(returndata)
+        
       });
+
+      
  
-      await workerProcess.on('exit', function (code) {
-          console.log('子进程已退出，退出码 '+code);
-      });
+    //   await workerProcess.on('exit', function (code) {
+    //       console.log('子进程已退出，退出码 '+code);
+    //   });
+
+
+
     }
 
  

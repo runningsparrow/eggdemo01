@@ -11,7 +11,7 @@ class NewsController extends Controller {
 
     //换成使用 html 渲染页面
     //注意需要使用同步方式渲染页面
-      await this.ctx.render('news.html');
+      await this.ctx.render('news');
       
   }
 
