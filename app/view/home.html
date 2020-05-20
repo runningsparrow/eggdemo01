@@ -1,35 +1,27 @@
-{% include "../include/common.html" %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
-</head>
-<body>
-    <div>home test</div>
-    <div>
+<% include include/common.html %>
 
-        <!-- <%=msg%> -->
-        <!-- <%=doconfigall%> -->
-        <!-- <%=doconfigall.doconfigall%> -->
-        <ul>
-            <%for(var i=0;i<doconfigall.doconfigall.length;i++){%>
-                <li><%=doconfigall.doconfigall[i].doc_id%></li>
-                <li><%=doconfigall.doconfigall[i].doc_name%></li>
-                <li><%=doconfigall.doconfigall[i].doc_template%></li>
-                <li><%=doconfigall.doconfigall[i].doc_outpath%></li>
-                <li><%=doconfigall.doconfigall[i].doc_label_text%></li>
-                <li><%=doconfigall.doconfigall[i].doc_image_dir%></li>
-                <li><%=doconfigall.doconfigall[i].doc_excel%></li>
-                <li><%=doconfigall.doconfigall[i].doc_rmrk%></li>
-            <%}%>
+        <div>home test</div>
+        <div>
+    
+            <ul>
+                <%for(var i=0;i<doconfigall.doconfigall.length;i++){%>
+                    <li><%=doconfigall.doconfigall[i].doc_id%></li>
+                    <li><%=doconfigall.doconfigall[i].doc_name%></li>
+                    <li><%=doconfigall.doconfigall[i].doc_template%></li>
+                    <li><%=doconfigall.doconfigall[i].doc_outpath%></li>
+                    <li><%=doconfigall.doconfigall[i].doc_label_text%></li>
+                    <li><%=doconfigall.doconfigall[i].doc_image_dir%></li>
+                    <li><%=doconfigall.doconfigall[i].doc_excel%></li>
+                    <li><%=doconfigall.doconfigall[i].doc_rmrk%></li>
+                <%}%>
+    
+               
+            </ul>
+            
+    
+        </div>
 
-           
-        </ul>
+
         
-
-    </div>
-</body>
-</html>
+<% include include/foot.html %>
+    

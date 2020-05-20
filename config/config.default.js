@@ -2,6 +2,9 @@
 
 'use strict';
 
+//for egg-static
+const path = require('path');
+
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
@@ -50,6 +53,19 @@ module.exports = appInfo => {
     agent: false,
   };
 
+  // {app_root}/config/config.default.js
+  // exports.static = {
+
+  // console.log(appInfo.baseDir)
+
+  config.static= {
+    prefix: '/public/',
+    // maxAge: 31536000,
+    dir: [path.join(appInfo.baseDir, 'node_modules'),path.join(appInfo.baseDir, 'app/public')]
+  };
+
+  // console.log(config.static.dir)
+
   
 
 
@@ -57,7 +73,9 @@ module.exports = appInfo => {
   const userConfig = {
     // myAppName: 'egg',
 
-    pythonpath: "D:/workspace/python/docmake/src/",
+    // pythonpath: "D:/workspace/python/docmake/src/",
+
+    pythonpath: 'I:/workspace1/python/docmake/src/',
     
 
   };

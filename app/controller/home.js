@@ -10,31 +10,31 @@ class HomeController extends Controller {
     // ctx.body = 'hi, egg';
 
 
-    var para = "ddddddd"
-    var ppath = 'python '+this.app.pythonpath+'docquery.py '
-    console.log("============")
-    console.log(ppath)
+    // var para = "ddddddd"
+    // var ppath = 'python '+this.app.pythonpath+'docquery.py '
+    // console.log("============")
+    // console.log(ppath)
 
 
-    var workerProcess = await child_process.exec(ppath+para, 
-      function (error, stdout, stderr) {
-      if (error) {
-          console.log("debug")
-          console.log(error.stack);
-          console.log('Error code: '+error.code);
-          console.log('Signal received: '+error.signal);
-      }
-      console.log('stdout: ' + stdout);
-      console.log('stderr: ' + stderr);
+    // var workerProcess = await child_process.exec(ppath+para, 
+    //   function (error, stdout, stderr) {
+    //   if (error) {
+    //       console.log("debug")
+    //       console.log(error.stack);
+    //       console.log('Error code: '+error.code);
+    //       console.log('Signal received: '+error.signal);
+    //   }
+    //   console.log('stdout: ' + stdout);
+    //   console.log('stderr: ' + stderr);
 
 
       
 
-    });
+    // });
 
-    await workerProcess.on('exit', function (code) {
-        console.log('子进程已退出，退出码 '+code);
-    });
+    // await workerProcess.on('exit', function (code) {
+    //     console.log('子进程已退出，退出码 '+code);
+    // });
 
 
 
