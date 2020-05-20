@@ -1,3 +1,3 @@
-$("#btnhello").on("click",function(e){
+jQuery("#btnhello").on("click",function(e){
     alert("js");
 })
