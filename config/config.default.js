@@ -60,7 +60,8 @@ module.exports = appInfo => {
 
   config.static= {
     prefix: '/public/',
-    // maxAge: 31536000,
+    //maxAge must setup to make js file loaded
+    maxAge: 31536000,
     dir: [path.join(appInfo.baseDir, 'node_modules'),path.join(appInfo.baseDir, 'app/public')]
   };
 
@@ -72,7 +73,8 @@ module.exports = appInfo => {
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
-
+    
+    //该变量通过 this.config引用
     // pythonpath: "D:/workspace/python/docmake/src/",
 
     pythonpath: 'I:/workspace1/python/docmake/src/',
