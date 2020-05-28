@@ -1,11 +1,26 @@
 <% include include/common.html %>
 
 
-        <div>文档列表</div>
+        <div><h2>文档列表</h2></div>
             <br>
 
             <%for(var i=0;i<doconfigall.doconfigall.length;i++){%>
-                <div class="row">
+                <div class="row" >
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" >
+                        序号
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" >
+                        记录名
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" >
+                        模板名称
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" >
+                        输出名称
+                    </div>
+                </div>
+                <br>
+                <div class="row" style="border:1px solid blue;">
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" >
                         <%=doconfigall.doconfigall[i].doc_id%>
                     </div>
@@ -19,8 +34,23 @@
                         <%=doconfigall.doconfigall[i].doc_outpath%>
                     </div>
                 </div>
-                
-                <div class="row">
+                <br>
+                <div class="row" >
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" >
+                        字符文件名
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" >
+                        图片目录名
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" >
+                        表格文件名
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" >
+                        备注
+                    </div>
+                </div>
+                <br>
+                <div class="row"style="border:1px solid blue;">
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" >
                         <%=doconfigall.doconfigall[i].doc_label_text%>
                     </div>
@@ -34,6 +64,7 @@
                         <%=doconfigall.doconfigall[i].doc_rmrk%>
                     </div>
                 </div>
+                <br>
                 <div class="row">
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" >
                         <input   type="checkbox"   value="是否生成文档"    name="checkbox_doc"/> 生成文档
@@ -52,11 +83,6 @@
             <%}%>
 
                 
-    
-
-            
-    
-       
 
 
 
