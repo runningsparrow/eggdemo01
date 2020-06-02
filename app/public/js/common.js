@@ -123,52 +123,63 @@ var tree = [{
 }
 
 
-$('#tree').treeview({
-  data: getTree(),
-  color:"#428bca",
-  levels:3,
-  onNodeSelected:function(event,node){
-    console.log("选中了"+ node.text);
-
-    var select_node = $(this).treeview('getSelected');
-    // console.log(select_node[0].text)
-
-    console.log(select_node)
-
-    $(this).treeview('expandNode',select_node);
-
-    // console.log(select_node[0].state)
-    
-    // if (select_node[0].state.expanded) {
-    //   $(this).treeview('collapseNode', select_node);
-    //   // select_node[0].state.selected = false;
-    // }
-    // else {
-    //   $(this).treeview('expandNode', select_node);
-    //   // select_node[0].state.selected = true;
+function inittree()
+{
+    $('#tree').treeview({
+        data: getTree(),
+        color:"#428bca",
+        levels:0,
+        click:function(event,node){
+            console.log(node)
+        },
+        onNodeSelected:function(event,node){
       
-    // }
+          
+      
+          console.log("选中了"+ node.text);
+      
+      
+          if(node.state.expanded == false){
+              $(this).treeview('expandNode',node.nodeId);
+              
+              
+          }
+          else{
+              $(this).treeview('collapseNode',node.nodeId);
+              
+          }
+      
+          node.state.selected = false;
+          
+          console.log(node)
+          
+          
+          
+          
+      
+          
+        },
+        onNodeUnselected:function(event,node){
+          console.log("取消了"+ node.text);
+      
+          // node.state.selected = false
+
+          
+      
+        }
+    });
+
     
-  },
-  onNodeUnselected:function(event,node){
-    console.log("取消了"+ node.text);
-
-    var unselect_node = $(this).treeview('getUnselected');
-
-    console.log(unselect_node)
-
-    $(this).treeview('collapseNode',unselect_node);
 
 
-    // var nodelist = [node]
-
-    // console.log(nodelist)
-
-
-
-    // $(this).treeview('expandNode', nodelist);
     
     
+}
 
-  }
-});       
+
+inittree();
+
+
+
+
+     
