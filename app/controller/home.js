@@ -10,31 +10,31 @@ class HomeController extends Controller {
     // ctx.body = 'hi, egg';
 
 
-    var para = "ddddddd"
-    var ppath = 'python '+this.config.pythonpath+'docquery.py '
-    console.log("============")
-    console.log(ppath)
+    // var para = "ddddddd"
+    // var ppath = 'python '+this.config.pythonpath+'docquery.py '
+    // console.log("============")
+    // console.log(ppath)
 
 
-    var workerProcess = await child_process.exec(ppath+para, 
-      function (error, stdout, stderr) {
-      if (error) {
-          console.log("debug")
-          console.log(error.stack);
-          console.log('Error code: '+error.code);
-          console.log('Signal received: '+error.signal);
-      }
-      console.log('stdout: ' + stdout);
-      console.log('stderr: ' + stderr);
+    // var workerProcess = await child_process.exec(ppath+para, 
+    //   function (error, stdout, stderr) {
+    //   if (error) {
+    //       console.log("debug")
+    //       console.log(error.stack);
+    //       console.log('Error code: '+error.code);
+    //       console.log('Signal received: '+error.signal);
+    //   }
+    //   console.log('stdout: ' + stdout);
+    //   console.log('stderr: ' + stderr);
 
 
       
 
-    });
+    // });
 
-    await workerProcess.on('exit', function (code) {
-        console.log('子进程已退出，退出码 '+code);
-    });
+    // await workerProcess.on('exit', function (code) {
+    //     console.log('子进程已退出，退出码 '+code);
+    // });
 
 
 
@@ -52,9 +52,25 @@ class HomeController extends Controller {
     await this.ctx.render('home',{
       doconfigall: doconfigall,
       msg: msg,
-      returncode:0
+      returncode:returncode
     });
   }
+
+
+  async makedoc() {
+
+    //get方式
+    // var query = this.ctx.query;
+
+    //post方式
+    var postdata = this.ctx.request.body
+
+    await console.log(postdata)
+
+
+
+  }
+
 }
 
 module.exports = HomeController;

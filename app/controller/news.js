@@ -28,6 +28,8 @@ class NewsController extends Controller {
 
     console.log(query);
 
+
+    //ctx.body返回文本,如果使用render则返回页面
     this.ctx.body = "新闻详情";
   }
 

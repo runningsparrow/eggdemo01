@@ -160,13 +160,13 @@ var tree = [
 				checked: false,
 				 disabled: false,
 				 expanded: false,
-				 selected: true
+				 selected: false
 		   }
 		 },
 		 {
 		   text: "新增",
 		   icon: "fa fa-cube",
-		   href:"/news",
+		   href:"/newdoc",
 			state: {
 				checked: false,
 				disabled: false,
@@ -183,12 +183,12 @@ var tree = [
 		{
 		  text: "参数说明",
 		  icon: "fa fa-cube",
-		  href:"/",
+		  href:"/guide",
 		  state: {
 			   checked: false,
 				disabled: false,
 				expanded: false,
-				selected: true
+				selected: false
 		  }
 		}
 	  ]
@@ -225,6 +225,7 @@ function inittree()
               $(this).treeview('expandNode',node.nodeId);
               
               
+              
           }
           else{
               $(this).treeview('collapseNode',node.nodeId);
@@ -232,7 +233,7 @@ function inittree()
           }
       
 
-          
+        //   node.state.selected = false
           
       
           

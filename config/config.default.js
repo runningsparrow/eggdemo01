@@ -19,7 +19,8 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1588994900878_7487';
 
   // add your middleware config here
-  config.middleware = [];
+  //引入 auth.js
+  config.middleware = ['auth'];
 
 
   //配置ejs模板引擎
