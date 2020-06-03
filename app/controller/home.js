@@ -63,11 +63,39 @@ class HomeController extends Controller {
     // var query = this.ctx.query;
 
     //post方式
-    var postdata = this.ctx.request.body
+    var postdata = this.ctx.request.body;
 
-    await console.log(postdata)
+    await console.log(postdata);
+
+    
+
+    //run python 
+    var para = postdata.docname
+    // var ppath = 'python '+this.config.pythonpath+'docquery.py '
+
+    var ppath = 'python '+this.config.pythonpath+'docmaker.py '
+
+    var workerProcess = await child_process.exec(ppath+para, 
+        function (error, stdout, stderr) {
+        if (error) {
+            console.log("debug")
+            console.log(error.stack);
+            console.log('Error code: '+error.code);
+            console.log('Signal received: '+error.signal);
+        }
+        console.log('stdout: ' + stdout);
+        console.log('stderr: ' + stderr);
+      });
 
 
+    var msg = "successful"
+    var returncode = 0
+    var returndata = {
+      data: postdata,
+      msg: msg,
+      returncode:returncode
+    }
+    this.ctx.body=returndata;
 
   }
 

@@ -7,7 +7,7 @@ module.exports = app => {
   const { router, controller } = app;
   router.get('/', controller.home.index);
 
-  router.get('/makedoc', controller.home.makedoc);
+  router.post('/makedoc', controller.home.makedoc);
 
 
   router.get('/newdoc', controller.newdoc.index);
