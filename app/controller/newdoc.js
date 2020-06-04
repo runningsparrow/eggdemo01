@@ -9,6 +9,30 @@ class NewdocController extends Controller {
         await this.ctx.render('newdoc');
         
     }
+
+
+    async insertonedoc(){
+
+        var postdata = this.ctx.request.body;
+
+        await console.log(postdata);
+        
+        
+        //insertdata
+
+        
+
+        //return 
+        var msg = "successful"
+        var returncode = 0
+        var returndata = {
+        data: postdata,
+        msg: msg,
+        returncode:returncode
+        }
+        this.ctx.body=returndata;
+
+    }
 }
 
 

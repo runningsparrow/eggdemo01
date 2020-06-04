@@ -18,6 +18,11 @@ class DoconfigService extends Service {
     }
 
 
+    async insertone(doconfigone){
+      //
+    }
+
+
   }
 
 

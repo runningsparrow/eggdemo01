@@ -12,6 +12,8 @@ module.exports = app => {
 
   router.get('/newdoc', controller.newdoc.index);
 
+  router.post('/insertonedoc', controller.newdoc.insertonedoc);
+
 
 
   router.get('/guide', controller.guide.index);
