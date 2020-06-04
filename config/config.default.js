@@ -76,10 +76,10 @@ module.exports = appInfo => {
     // myAppName: 'egg',
     
     //该变量通过 this.config引用
-    pythonpath: "D:/workspace/python/docmake/src/",
+    // pythonpath: "D:/workspace/python/docmake/src/",
     
 
-    // pythonpath: 'I:/workspace1/python/docmake/src/',
+    pythonpath: 'I:/workspace1/python/docmake/src/',
     
 
   };
