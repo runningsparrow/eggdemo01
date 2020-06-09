@@ -37,9 +37,26 @@
 $("#newdocform").validate({
     rules: {
         doc_name: {
-            required: true,
-            
+            required: true,   
           },
+        doc_template: {
+            required: true,   
+        },  
+        doc_outpath: {
+            required: true,   
+        },  
+        doc_label_text: {
+            required: true,   
+        },  
+        doc_image_dir: {
+            required: true,   
+        },  
+        doc_excel: {
+            required: true,   
+        },  
+        doc_attach_dir: {
+            required: true,   
+        },  
     }
     
 })

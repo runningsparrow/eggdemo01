@@ -20,6 +20,11 @@ class DoconfigService extends Service {
 
     async insertone(doconfigone){
       //
+      const retruncode = await this.app.mysql.insert("doconfig",doconfigone)
+      
+      await console.log(retruncode)
+    
+
     }
 
 

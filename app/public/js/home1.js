@@ -1,7 +1,10 @@
 
 $(".reparidoc").on('click',function(){
     
-
+    console.log(this)
+    console.log(this.id)
+    console.log(this.name)
+    console.log(this.value)
     
 })
 
@@ -9,7 +12,10 @@ $(".reparidoc").on('click',function(){
 
 $(".deletedoc").on('click',function(){
     
-
+    console.log(this)
+    console.log(this.id)
+    console.log(this.name)
+    console.log(this.value)
     
 })
 

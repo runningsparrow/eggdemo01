@@ -76,10 +76,14 @@
                         <input   type="checkbox"   value="是否生成文档"    name="checkbox_doc"/> 生成文档
                     </div>    
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" >
-                        <button class="btn btn-primary reparidoc" id="repairdoc<%=doconfigall.doconfigall[i].doc_name%>" name="<%=doconfigall.doconfigall[i].doc_name%>">修改</button>
+                        <button class="btn btn-primary reparidoc" id="repairdoc<%=doconfigall.doconfigall[i].doc_name%>" name="<%=doconfigall.doconfigall[i].doc_name%>"
+                            value=<%=csrf%>
+                            >修改</button>
                     </div>
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" >
-                        <button class="btn btn-info deletedoc" id="deletedoc<%=doconfigall.doconfigall[i].doc_name%>" name="<%=doconfigall.doconfigall[i].doc_name%>">删除</button>
+                        <button class="btn btn-info deletedoc" id="deletedoc<%=doconfigall.doconfigall[i].doc_name%>" name="<%=doconfigall.doconfigall[i].doc_name%>" 
+                            value=<%=csrf%>
+                            >删除</button>
                     </div>
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" >
                         <button class="btn btn-warning makedoc" id="makedoc<%=doconfigall.doconfigall[i].doc_name%>" name="<%=doconfigall.doconfigall[i].doc_name%>"

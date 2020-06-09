@@ -99,6 +99,17 @@ class HomeController extends Controller {
 
   }
 
+
+  //delete data
+  async deletedoc(){
+
+    //post方式
+    var postdata = this.ctx.request.body;
+
+    await console.log(postdata);
+
+  }
+
 }
 
 module.exports = HomeController;
