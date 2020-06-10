@@ -9,6 +9,10 @@ module.exports = app => {
 
   router.post('/makedoc', controller.home.makedoc);
 
+  router.post('/queryone', controller.home.queryone);
+
+  router.post('/updateone', controller.home.updateone);
+
 
   router.get('/newdoc', controller.newdoc.index);
 

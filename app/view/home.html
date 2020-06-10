@@ -77,7 +77,7 @@
                     </div>    
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" >
                         <button class="btn btn-primary reparidoc" id="repairdoc<%=doconfigall.doconfigall[i].doc_name%>" name="<%=doconfigall.doconfigall[i].doc_name%>"
-                            value=<%=csrf%>
+                            value=<%=csrf%> data-toggle="modal" data-target="#myModal"
                             >修改</button>
                     </div>
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" >
@@ -94,6 +94,73 @@
                 <hr>
             <%}%>
 
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">
+                                模态框（Modal）标题
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="newdocform" method="POST" action="/updateone">
+                            <div class="form-group">
+                                <label for="doc_name">记录名 :</label>
+                                <input type="text" class="form-control" id="doc_name" name="doc_name" placeholder="请输入记录名 举例:test1">
+                            </div>
+                            <div class="form-group">
+                                <label for="doc_template">模板文件:</label>
+                                <input type="text" class="form-control" id="doc_template" name="doc_template" placeholder="请输入模板文件名 举例:test1.docx">
+                            </div>
+                            <div class="form-group">
+                                    <label for="doc_outpath">输出文件:</label>
+                                    <input type="text" class="form-control" id="doc_outpath" name="doc_outpath" placeholder="请输入输出文件名 举例：test11.docx">
+                            </div>
+                            <div class="form-group">
+                                    <label for="doc_label_text">文本数据:</label>
+                                    <input type="text" class="form-control" id="doc_label_text" name="doc_label_text" placeholder="请输入文本数据文件名 举例： text1.json">
+                            </div>
+                            <div class="form-group">
+                                    <label for="doc_image_dir">图片目录:</label>
+                                    <input type="text" class="form-control" id="doc_image_dir" name="doc_image_dir" placeholder="请输入图片目录名 举例： test1">
+                            </div>
+                    
+                            <div class="form-group">
+                                    <label for="doc_excel">电子表格文件:</label>
+                                    <input type="text" class="form-control" id="doc_excel" name="doc_excel" placeholder="请输入电子表格文件名 举例： excel1.xlsx">
+                            </div>
+                    
+                            <div class="form-group">
+                                    <label for="doc_image_dir">附件目录:</label>
+                                    <input type="text" class="form-control" id="doc_attach_dir" name="doc_attach_dir" placeholder="请输入附件目录名 举例： test1">
+                            </div>
+                    
+                            <div class="form-group">
+                                    <label for="doc_rmrk">备注:</label>
+                                    <input type="text" class="form-control" id="doc_rmrk" name="doc_rmrk" placeholder="请输入备注">
+                            </div>
+                    
+                            <div class="form-group">
+                                            <label for="_csrf">备注:</label>
+                                            <input type="hidden" class="form-control" id="_csrf" name="_csrf" value="<%=csrf%>">
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="btninsertone" value=<%=csrf%>>提交修改</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                        </button>
+                        <!-- <button type="button" class="btn btn-primary">
+                            提交更改
+                        </button> -->
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
                 
 
 
