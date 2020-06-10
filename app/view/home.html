@@ -82,7 +82,7 @@
                     </div>
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" >
                         <button class="btn btn-info deletedoc" id="deletedoc<%=doconfigall.doconfigall[i].doc_name%>" name="<%=doconfigall.doconfigall[i].doc_name%>" 
-                            value=<%=csrf%>
+                            value=<%=csrf%> data-toggle="modal" data-target="#deleteModal"
                             >删除</button>
                     </div>
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" >
@@ -107,7 +107,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form id="newdocform" method="POST" action="/updateone">
+                        <form id="repairdocform" method="POST" action="/updateone">
                             <div class="form-group">
                                 <label for="doc_name">记录名 :</label>
                                 <input type="text" class="form-control" id="doc_name" name="doc_name" placeholder="请输入记录名 举例:test1">
@@ -148,7 +148,76 @@
                                             <label for="_csrf">备注:</label>
                                             <input type="hidden" class="form-control" id="_csrf" name="_csrf" value="<%=csrf%>">
                             </div>
-                            <button type="submit" class="btn btn-primary" id="btninsertone" value=<%=csrf%>>提交修改</button>
+                            <button type="submit" class="btn btn-primary" id="btnrepairone" value=<%=csrf%>>提交修改</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                        </button>
+                        <!-- <button type="button" class="btn btn-primary">
+                            提交更改
+                        </button> -->
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+
+
+
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="deleteModalLabel">
+                                模态框（Modal）标题
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="deletedocform" method="POST" action="/updateone">
+                            <div class="form-group">
+                                <label for="doc_name1">记录名 :</label>
+                                <input type="text" class="form-control" id="doc_name1" name="doc_name1" placeholder="请输入记录名 举例:test1">
+                            </div>
+                            <div class="form-group">
+                                <label for="doc_template1">模板文件:</label>
+                                <input type="text" class="form-control" id="doc_template1" name="doc_template1" placeholder="请输入模板文件名 举例:test1.docx">
+                            </div>
+                            <div class="form-group">
+                                    <label for="doc_outpath1">输出文件:</label>
+                                    <input type="text" class="form-control" id="doc_outpath1" name="doc_outpath1" placeholder="请输入输出文件名 举例：test11.docx">
+                            </div>
+                            <div class="form-group">
+                                    <label for="doc_label_text1">文本数据:</label>
+                                    <input type="text" class="form-control" id="doc_label_text1" name="doc_label_text1" placeholder="请输入文本数据文件名 举例： text1.json">
+                            </div>
+                            <div class="form-group">
+                                    <label for="doc_image_dir1">图片目录:</label>
+                                    <input type="text" class="form-control" id="doc_image_dir1" name="doc_image_dir1" placeholder="请输入图片目录名 举例： test1">
+                            </div>
+                    
+                            <div class="form-group">
+                                    <label for="doc_excel1">电子表格文件:</label>
+                                    <input type="text" class="form-control" id="doc_excel1" name="doc_excel1" placeholder="请输入电子表格文件名 举例： excel1.xlsx">
+                            </div>
+                    
+                            <div class="form-group">
+                                    <label for="doc_image_dir1">附件目录:</label>
+                                    <input type="text" class="form-control" id="doc_attach_dir1" name="doc_attach_dir1" placeholder="请输入附件目录名 举例： test1">
+                            </div>
+                    
+                            <div class="form-group">
+                                    <label for="doc_rmrk1">备注:</label>
+                                    <input type="text" class="form-control" id="doc_rmrk1" name="doc_rmrk1" placeholder="请输入备注">
+                            </div>
+                    
+                            <div class="form-group">
+                                            <label for="_csrf">备注:</label>
+                                            <input type="hidden" class="form-control" id="_csrf" name="_csrf" value="<%=csrf%>">
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="btndeleteone" value=<%=csrf%>>确定删除</button>
                         </form>
                     </div>
                     <div class="modal-footer">

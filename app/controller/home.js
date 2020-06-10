@@ -144,7 +144,7 @@ class HomeController extends Controller {
 
 
     var doconfigone = {
-      id:doconfigone.doc_id,
+      doc_id:doconfigone.doc_id,
       doc_name:postdata.doc_name,
       doc_template:postdata.doc_template,
       doc_outpath:postdata.doc_outpath,
