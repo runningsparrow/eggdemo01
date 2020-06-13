@@ -1,3 +1,6 @@
+console.log(window.location)
+
+
 
 $(".reparidoc").on('click',function(){
     
@@ -28,6 +31,8 @@ $(".reparidoc").on('click',function(){
             $("#doc_excel").val(data.data.doconfigone.doc_excel)
             $("#doc_attach_dir").val(data.data.doconfigone.doc_attach_dir)
             $("#doc_rmrk").val(data.data.doconfigone.doc_rmrk)
+
+            
         },
         error:function(data){
             console.log("queryone fail")
@@ -85,6 +90,15 @@ $(".deletedoc").on('click',function(){
     
 })
 
+
+
+// $("#btnrepairone").on('click', function(){
+
+//     console.log("btnrepairone")
+
+//     window.location.href = "/"
+
+// });
 
 
 $(".makedoc").on('click',function(){

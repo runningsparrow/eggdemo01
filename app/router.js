@@ -13,10 +13,14 @@ module.exports = app => {
 
   router.post('/updateone', controller.home.updateone);
 
+  router.post('/deletedoc', controller.home.deletedoc);
+
 
   router.get('/newdoc', controller.newdoc.index);
 
   router.post('/insertonedoc', controller.newdoc.insertonedoc);
+
+  router.get('/upfile', controller.upfile.index);
 
 
 

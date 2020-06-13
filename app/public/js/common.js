@@ -173,7 +173,18 @@ var tree = [
 				expanded: false,
 				selected: false
 		   }
-		 }
+		 },
+		 {
+			text: "上传文件",
+			icon: "fa fa-cube",
+			href:"/upfile",
+		 state: {
+			 checked: false,
+			 disabled: false,
+			 expanded: false,
+			 selected: false
+			}
+		}
 	   ]
 	 },
 	 {

@@ -95,7 +95,11 @@ class HomeController extends Controller {
       msg: msg,
       returncode:returncode
     }
-    this.ctx.body=returndata;
+    // this.ctx.body=returndata;
+
+    await this.ctx.render('home',{
+      returndata
+    });
 
   }
 
@@ -107,6 +111,30 @@ class HomeController extends Controller {
     var postdata = this.ctx.request.body;
 
     await console.log(postdata);
+
+
+    const returndata = await this.ctx.service.doconfig.deleteone(postdata.doc_name1);
+
+
+    // var msg = "successful"
+    // var returncode = 0
+    // var returndata = {
+    //   data: returndata,
+    //   msg: msg,
+    //   returncode:returncode
+    // }
+    // this.ctx.body=returndata;
+
+    var msg = "successful"
+    var returncode = 0
+    const doconfigall = await this.ctx.service.doconfig.findall();
+    await console.log(doconfigall)
+    await this.ctx.redirect('/',{
+      doconfigall: doconfigall,
+      msg: msg,
+      returncode:returncode
+    });
+
 
   }
 
@@ -158,18 +186,34 @@ class HomeController extends Controller {
 
     await console.log(doconfigone)
 
-    returndata = await this.ctx.service.doconfig.updateone(doconfigone);
+    var returndata = await this.ctx.service.doconfig.updateone(doconfigone);
 
+
+    // var msg = "successful"
+    // var returncode = 0
+    // var returndata = {
+    //   data: returndata,
+    //   msg: msg,
+    //   returncode:returncode
+    // }
+    // this.ctx.body=returndata;
 
     var msg = "successful"
     var returncode = 0
-    var returndata = {
-      data: returndata,
+    // const doconfigone = await this.ctx.service.doconfig.findone("test4");
+    const doconfigall = await this.ctx.service.doconfig.findall();
+    await console.log(doconfigall)
+    // await this.ctx.render('home',{
+    //   doconfigall: doconfigall,
+    //   msg: msg,
+    //   returncode:returncode
+    // });
+
+    await this.ctx.redirect('/',{
+      doconfigall: doconfigall,
       msg: msg,
       returncode:returncode
-    }
-    this.ctx.body=returndata;
-
+    });
 
 
   }

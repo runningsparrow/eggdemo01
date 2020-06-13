@@ -46,7 +46,16 @@ class NewdocController extends Controller {
         msg: msg,
         returncode:returncode
         }
-        this.ctx.body=returndata;
+        // this.ctx.body=returndata;
+
+
+        console.log("jump to newdoc")
+
+        await this.ctx.redirect('/newdoc',{
+            data: returndata,
+            msg: msg,
+            returncode:returncode
+        });
 
     }
 }

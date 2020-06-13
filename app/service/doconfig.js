@@ -56,6 +56,18 @@ class DoconfigService extends Service {
     }
 
 
+    async deleteone(dname){
+
+      console.log("delete one")
+
+      console.log(dname)
+
+      var returncode= await this.app.mysql.delete('doconfig',{ doc_name:dname });
+
+      return returncode
+    }
+
+
   }
 
 
