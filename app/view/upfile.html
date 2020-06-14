@@ -16,7 +16,11 @@
 </div>
 <div>
 
-    <select id="slpk" class="selectpicker" data-live-search="true" ></select>
+    <select id="slpk" class="selectpicker" >
+        <%for(var i=0;i<doconfigall.doconfigall.length;i++){%>
+        <option><%=doconfigall.doconfigall[i].doc_name%></option>
+        <%}%>
+    </select>
     
 </div>
 
@@ -28,6 +32,14 @@
 <div>
 
     <h3>指定上传路径</h3>
+
+    <div>
+        <input type="file" ></input>
+    </div>
+
+    <div>
+        <input type="file" directory="" nwdirectory=""></input>
+    </div>
 </div>
 
 <% include include/foot.html %>
