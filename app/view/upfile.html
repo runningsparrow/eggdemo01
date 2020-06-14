@@ -31,14 +31,75 @@
 
 <div>
 
-    <h3>指定上传路径</h3>
+
+    <!-- <button class="btn btn-primary" id="btntest1">测试按钮1</button> -->
 
     <div>
-        <input type="file" ></input>
+        <h4>指定模板文件</h4>
+    </div>
+    <div id="doctemplate">
+        <input id="inputdoc_template" type="file"></input>
+    </div>
+    <div id="doctemplatelist">
+    </div>
+    <br>
+
+    <br>
+
+    <div>
+        <h4>指定输入文本文件</h4>
+    </div>
+    <div>
+        <input id="inputdoc_label_text" type="file"></input>
+    </div>
+    <div id="inputdoc_label_textlist">
+    </div>
+    <br>
+
+    <br>
+
+    <div>
+        <h4>选择图片(多选)</h4>
+    </div>
+    <div>
+        <!-- 目录 -->
+        <!-- <input id="inputdoc_image_dir" type="file" webkitdirectory></input> -->
+        <!-- 多选文件 -->
+        <input id="inputdoc_image_dir" type="file" multiple="true"></input>
+    </div>
+    <div id="inputdoc_image_dirlist">
     </div>
 
+    <br>
+    
+    <br>
+
     <div>
-        <input type="file" directory="" nwdirectory=""></input>
+        <h4>指定电子表格文件</h4>
+    </div>
+    <div>
+        <input id="inputdoc_excel"  type="file"></input>
+    </div>
+    <div id="inputdoc_excellist">
+    </div>
+
+    <br>
+    
+    <br>
+    <div>
+        <h4>选择附件(多选)</h4>
+    </div>
+    <div>
+        <input id="inputdoc_attach_dir" type="file" multiple="true"></input>
+    </div>
+    <div id="inputdoc_attach_dirlist">
+    </div>
+    <br>
+    
+    <br>
+
+    <div>
+        <button id="formdatasub" class="btn btn-primary" value=<%=csrf%>>上传</button>
     </div>
 </div>
 

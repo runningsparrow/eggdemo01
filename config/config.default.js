@@ -68,6 +68,15 @@ module.exports = appInfo => {
 
   // console.log(config.static.dir)
 
+  //配置上传文件
+  config.multipart = {
+    mode: 'file',
+    tmpdir: path.join(appInfo.baseDir, 'egg-multipart-tmp', appInfo.name), // 配置文件缓存目录
+    cleanSchedule: {
+     
+      cron: '0 30 4 * * *',  // 自动清除时间
+    },
+  };
   
 
 
