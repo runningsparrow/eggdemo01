@@ -138,6 +138,93 @@ $("#inputdoc_attach_dir").change(
 )
 
 
+$("#scanfile").click(
+    function(){
+
+        $.ajax({
+            url:"/filecheck",
+            type:"POST",
+            contentType:"application/json;charset=utf-8",
+            data:JSON.stringify({docname:$('#slpk').selectpicker('val'),_csrf:this.value}),
+            dataType:"json",
+            success:function(data){
+                console.log("check successful")
+                console.log(data)
+
+                $("#template").empty()
+                data.data.template.forEach(function(value , index , array){
+
+                    
+                    var one = "<div>"+value+"</div>";
+
+                    $("#template").append(one)
+        
+                });
+
+                $("#output").empty()
+                data.data.output.forEach(function(value , index , array){
+
+                    
+                    var one = "<div>"+value+"</div>";
+
+                    $("#output").append(one)
+        
+                });
+
+                $("#text").empty()
+                data.data.text.forEach(function(value , index , array){
+
+                    
+                    var one = "<div>"+value+"</div>";
+
+                    $("#text").append(one)
+        
+                });
+
+                $("#image").empty()
+                data.data.image.forEach(function(value , index , array){
+
+                    
+                    var one = "<div>"+value+"</div>";
+
+                    $("#image").append(one)
+        
+                });
+
+                $("#excel").empty()
+                data.data.excel.forEach(function(value , index , array){
+
+                    
+                    var one = "<div>"+value+"</div>";
+
+                    $("#excel").append(one)
+        
+                });
+
+                $("#attach").empty()
+                data.data.attach.forEach(function(value , index , array){
+
+                    
+                    var one = "<div>"+value+"</div>";
+
+                    $("#attach").append(one)
+        
+                });
+
+
+                
+                
+                
+            },
+            error:function(data){
+                console.log("check fail")
+                console.log(data)
+                
+            }
+        })
+    }
+)
+
 $("#formdatasub").click(
     function(){
         
@@ -158,17 +245,24 @@ $("#formdatasub").click(
 
             $.ajax({
                 type:"POST",
-                url:"/fileupload?_csrf=" + this.value+"&doc_name="+$('#slpk').selectpicker('val'),
+                url:"/fileupload?_csrf=" + this.value+"&doc_name="+$('#slpk').selectpicker('val')+"&type=template",
                 data:formdata1,
                 async:false,
                 contentType:false,
                 processData:false,
                 success:function(data){
                     console.log(data)
+                    $("#doctemplatesubstatus").empty()
+                    var one = "<div>"+"上传成功"+"</div>"
+                    $("#doctemplatesubstatus").append(one)
+                    
                 },
                 error:function(jqXHR){
                     console.log(JSON.stringify(jqXHR));
-                }
+                    $("#doctemplatesubstatus").empty()
+                    var one = "<div>"+"上传失败"+"</div>"
+                    $("#doctemplatesubstatus").append(one)
+                } 
             })
         }
 
@@ -180,6 +274,28 @@ $("#formdatasub").click(
             console.log("formdata2 has entry")
 
             //ajaxsubmit
+
+            $.ajax({
+                type:"POST",
+                url:"/fileupload?_csrf=" + this.value+"&doc_name="+$('#slpk').selectpicker('val')+"&type=text",
+                data:formdata2,
+                async:false,
+                contentType:false,
+                processData:false,
+                success:function(data){
+                    console.log(data)
+                    $("#inputdoc_label_textsubstatus").empty()
+                    var one = "<div>"+"上传成功"+"</div>"
+                    $("#inputdoc_label_textsubstatus").append(one)
+                    
+                },
+                error:function(jqXHR){
+                    console.log(JSON.stringify(jqXHR));
+                    $("#inputdoc_label_textsubstatus").empty()
+                    var one = "<div>"+"上传失败"+"</div>"
+                    $("#inputdoc_label_textsubstatus").append(one)
+                } 
+            })
         }
 
         if(formdata3.entries().next().done)
@@ -190,6 +306,29 @@ $("#formdatasub").click(
             console.log("formdata3 has entry")
 
             //ajaxsubmit
+
+
+            $.ajax({
+                type:"POST",
+                url:"/fileupload?_csrf=" + this.value+"&doc_name="+$('#slpk').selectpicker('val')+"&type=image",
+                data:formdata3,
+                async:false,
+                contentType:false,
+                processData:false,
+                success:function(data){
+                    console.log(data)
+                    $("#inputdoc_label_textsubstatus").empty()
+                    var one = "<div>"+"上传成功"+"</div>"
+                    $("#inputdoc_image_dirsubstatus").append(one)
+                    
+                },
+                error:function(jqXHR){
+                    console.log(JSON.stringify(jqXHR));
+                    $("#inputdoc_label_textsubstatus").empty()
+                    var one = "<div>"+"上传失败"+"</div>"
+                    $("#inputdoc_image_dirsubstatus").append(one)
+                } 
+            })
         }
 
         if(formdata4.entries().next().done)
@@ -200,6 +339,28 @@ $("#formdatasub").click(
             console.log("formdata4 has entry")
 
             //ajaxsubmit
+
+            $.ajax({
+                type:"POST",
+                url:"/fileupload?_csrf=" + this.value+"&doc_name="+$('#slpk').selectpicker('val')+"&type=excel",
+                data:formdata4,
+                async:false,
+                contentType:false,
+                processData:false,
+                success:function(data){
+                    console.log(data)
+                    $("#inputdoc_label_textsubstatus").empty()
+                    var one = "<div>"+"上传成功"+"</div>"
+                    $("#inputdoc_excelstatus").append(one)
+                    
+                },
+                error:function(jqXHR){
+                    console.log(JSON.stringify(jqXHR));
+                    $("#inputdoc_label_textsubstatus").empty()
+                    var one = "<div>"+"上传失败"+"</div>"
+                    $("#inputdoc_excelstatus").append(one)
+                } 
+            })
         }
 
 
@@ -211,6 +372,28 @@ $("#formdatasub").click(
             console.log("formdata5 has entry")
 
             //ajaxsubmit    
+
+            $.ajax({
+                type:"POST",
+                url:"/fileupload?_csrf=" + this.value+"&doc_name="+$('#slpk').selectpicker('val')+"&type=attachment",
+                data:formdata5,
+                async:false,
+                contentType:false,
+                processData:false,
+                success:function(data){
+                    console.log(data)
+                    $("#inputdoc_label_textsubstatus").empty()
+                    var one = "<div>"+"上传成功"+"</div>"
+                    $("#inputdoc_attach_dirstatus").append(one)
+                    
+                },
+                error:function(jqXHR){
+                    console.log(JSON.stringify(jqXHR));
+                    $("#inputdoc_label_textsubstatus").empty()
+                    var one = "<div>"+"上传失败"+"</div>"
+                    $("#inputdoc_attach_dirstatus").append(one)
+                } 
+            })
         }
     }
 
