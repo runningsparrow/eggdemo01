@@ -53,7 +53,7 @@ class UpfileController extends Controller {
 
         if(stat1.isDirectory()){
 
-            console.log("bug1")
+            // console.log("bug1")
             templatelist  = fs.readdirSync(path.join(basedir, `/resouce/template/`))
 
 
@@ -61,7 +61,7 @@ class UpfileController extends Controller {
             console.log(templatelist)
         }
         else{
-            templatelist = ""
+            templatelist = []
         }
 
         
@@ -77,7 +77,7 @@ class UpfileController extends Controller {
             console.log(outputlist)
         }
         else{
-            outputlist = ""
+            outputlist = []
         }
 
         
@@ -93,7 +93,7 @@ class UpfileController extends Controller {
             console.log(textlist)
         }
         else{
-            textlist = ""
+            textlist = []
         }
 
        
@@ -103,29 +103,53 @@ class UpfileController extends Controller {
 
         var imagelist
         
-        await fs.exists(path.join(basedir, `/resouce/image/`+ imagedir + "/"),function(exists){
-            if(exists){
-                console.log("图片目录存在")
+        // fs.exists(path.join(basedir, `/resouce/image/`+ imagedir + "/"),function(exists){
+        //     if(exists){
+        //         console.log("图片目录存在")
 
-                const stat4 = fs.statSync(path.join(basedir, `/resouce/image/`+ imagedir + "/"));
+        //         const stat4 = fs.statSync(path.join(basedir, `/resouce/image/`+ imagedir + "/"));
 
-                if(stat4.isDirectory()){
-                    imagelist  = fs.readdirSync(path.join(basedir, `/resouce/image/`+ imagedir + "/"))
+        //         if(stat4.isDirectory()){
 
-                    console.log(imagelist)
+        //             console.log("bug image")
+        //             imagelist  = fs.readdirSync(path.join(basedir, `/resouce/image/`+ imagedir + "/"))
 
-                }
-                else{
-                    imagelist = ""
-                }
+        //             console.log(imagelist)
+
+        //         }
+        //         else{
+        //             imagelist = ""
+        //         }
+
+        //     }
+        //     if(!exists){
+        //         console.log("图片目录不存在")
+        //     }
+        // });
+        
+        var imageexists = fs.existsSync(path.join(basedir, `/resouce/image/`+ imagedir + "/"))
+        if(imageexists){
+            console.log("图片目录存在")
+
+            const stat4 = fs.statSync(path.join(basedir, `/resouce/image/`+ imagedir + "/"));
+
+            if(stat4.isDirectory()){
+
+                console.log("bug image")
+                imagelist  = fs.readdirSync(path.join(basedir, `/resouce/image/`+ imagedir + "/"))
+
+                console.log(imagelist)
 
             }
-            if(!exists){
-                console.log("图片目录不存在")
+            else{
+                imagelist = []
             }
-        });
-        
-        
+
+        }
+        if(!imageexists){
+            console.log("图片目录不存在")
+            imagelist = []
+        }
 
         
 
@@ -141,7 +165,7 @@ class UpfileController extends Controller {
 
         }
         else{
-            excellist = ""
+            excellist = []
         }
 
         
@@ -150,28 +174,53 @@ class UpfileController extends Controller {
         //read attach
         var attachlist
 
-        await fs.exists(path.join(basedir, `/resouce/attachment/`+ attachdir + "/"),function(exists){
-            if(exists){
-               console.log("附件存在")
+        // fs.exists(path.join(basedir, `/resouce/attachment/`+ attachdir + "/"),function(exists){
+        //     if(exists){
+        //        console.log("附件存在")
 
 
-               const stat6 = fs.statSync(path.join(basedir, `/resouce/attachment/`+ attachdir + "/"));
+        //        const stat6 = fs.statSync(path.join(basedir, `/resouce/attachment/`+ attachdir + "/"));
 
-                if(stat6.isDirectory()){
-                    attachlist  = fs.readdirSync(path.join(basedir, `/resouce/attachment/`+ attachdir + "/"))
+        //         if(stat6.isDirectory()){
+        //             attachlist  = fs.readdirSync(path.join(basedir, `/resouce/attachment/`+ attachdir + "/"))
 
-                    console.log(attachlist)
+        //             console.log(attachlist)
             
 
-                }
-                else{
-                    attachlist = ""
-                }
+        //         }
+        //         else{
+        //             attachlist = ""
+        //         }
+        //     }
+        //        if(!exists){
+        //           console.log("附件不存在")
+        //        }
+        // })
+
+
+        var attachexists = fs.existsSync(path.join(basedir, `/resouce/attachment/`+ attachdir + "/"))
+        if(attachexists){
+            console.log("附件存在")
+
+
+            const stat6 = fs.statSync(path.join(basedir, `/resouce/attachment/`+ attachdir + "/"));
+
+            if(stat6.isDirectory()){
+                attachlist  = fs.readdirSync(path.join(basedir, `/resouce/attachment/`+ attachdir + "/"))
+
+                console.log(attachlist)
+        
+
             }
-               if(!exists){
-                  console.log("附件不存在")
-               }
-            })
+            else{
+                attachlist = []
+            }
+        }
+        if(!attachexists){
+            console.log("附件不存在")
+            attachlist = []
+        }
+
 
         
 

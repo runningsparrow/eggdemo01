@@ -137,6 +137,11 @@ $("#inputdoc_attach_dir").change(
     }
 )
 
+$("#builddir").click(
+    function(){
+        console.log("builddir")
+    }
+);
 
 $("#scanfile").click(
     function(){
