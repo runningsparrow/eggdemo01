@@ -139,7 +139,28 @@ $("#inputdoc_attach_dir").change(
 
 $("#builddir").click(
     function(){
-        console.log("builddir")
+        console.log("dirbuild")
+
+        $.ajax({
+            url:"/dirbuild",
+            type:"POST",
+            contentType:"application/json;charset=utf-8",
+            data:JSON.stringify({docname:$('#slpk').selectpicker('val'),_csrf:this.value}),
+            dataType:"json",
+            success:function(data){
+                console.log("build dir successful")
+                console.log(data)
+
+            },
+            error:function(data){
+                console.log("build dir fail")
+                console.log(data)
+
+
+            }
+
+        })
+
     }
 );
 

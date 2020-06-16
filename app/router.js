@@ -26,6 +26,8 @@ module.exports = app => {
 
   router.post('/filecheck', controller.upfile.filecheck);
 
+  router.post('/dirbuild', controller.upfile.dirbuild); 
+
 
 
   router.get('/guide', controller.guide.index);

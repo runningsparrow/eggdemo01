@@ -23,6 +23,92 @@ class UpfileController extends Controller {
     }
 
 
+    async dirbuild(){
+        var postdata = this.ctx.request.body;
+
+        var doconfigone = await this.ctx.service.doconfig.findone(postdata.docname)
+
+        const imagedir = doconfigone.doconfigone["doc_image_dir"]
+        const attachdir = doconfigone.doconfigone["doc_attach_dir"]
+
+
+        const basedir = this.config.baseDir
+        var msg = ""
+        var returncode = 0
+        var returndata = {imagedir:"",attachdir:""}
+
+        //image dir
+        var imageexists = fs.existsSync(path.join(basedir, `/resouce/image/`+ imagedir + "/"))
+        if(imageexists){
+            console.log("图片目录存在")
+
+            returncode = 0
+
+            msg = msg + "image dir exists "
+
+        }
+        if(!imageexists){
+            console.log("图片目录不存在")
+            
+            //build dir
+
+            returncode = 1
+
+            msg = msg + "image dir built"
+
+            fs.mkdirSync(path.join(basedir, `/resouce/image/`+ imagedir + "/")); 
+
+
+
+        }
+
+
+        //attach dir
+        var attachexists = fs.existsSync(path.join(basedir, `/resouce/attachment/`+ attachdir + "/"))
+        if(attachexists){
+            console.log("附件目录存在")
+
+            returncode = 0
+
+            msg = msg + "attachment dir exists "
+
+        }
+        if(!attachexists){
+            console.log("附件目录不存在")
+            
+            //build dir
+
+            returncode = 1
+
+            msg = msg + "attachment dir built"
+
+            fs.mkdirSync(path.join(basedir, `/resouce/attachment/`+ attachdir + "/")); 
+
+
+
+        }
+
+
+
+        returndata.imagedir = path.join(basedir, `/resouce/image/`+ imagedir + "/")
+        returndata.attachdir = path.join(basedir, `/resouce/attachment/`+ attachdir + "/")
+
+
+        var returndata = {
+            data: returndata,
+            msg: msg,
+            returncode:returncode
+        }
+        this.ctx.body=returndata;
+
+
+
+
+
+
+    }
+
+
     async filecheck(){
 
         var postdata = this.ctx.request.body;
