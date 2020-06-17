@@ -132,7 +132,7 @@ class UpfileController extends Controller {
 
         console.log(stat1.isDirectory())
 
-        var templatelist 
+        var templatelist = []
 
         
 
@@ -140,9 +140,18 @@ class UpfileController extends Controller {
         if(stat1.isDirectory()){
 
             // console.log("bug1")
-            templatelist  = fs.readdirSync(path.join(basedir, `/resouce/template/`))
+            const templatelist1  = fs.readdirSync(path.join(basedir, `/resouce/template/`))
 
+            const doc_template = doconfigone.doconfigone["doc_template"]
 
+            templatelist1.forEach(function(value,index,array){
+                
+                if(value == doc_template)
+                {
+                    console.log(value)
+                    templatelist.push(value)
+                }
+            })
 
             console.log(templatelist)
         }
@@ -154,11 +163,22 @@ class UpfileController extends Controller {
 
 
         //read output
-        var outputlist
+        var outputlist = []
         const stat2 = fs.statSync(path.join(basedir, `/resouce/output/`));
 
         if(stat2.isDirectory()){
-            outputlist  = fs.readdirSync(path.join(basedir, `/resouce/output/`))
+            const outputlist1  = fs.readdirSync(path.join(basedir, `/resouce/output/`))
+
+            const doc_outpath = doconfigone.doconfigone["doc_outpath"]
+
+            outputlist1.forEach(function(value,index,array){
+                
+                if(value == doc_outpath)
+                {
+                    console.log(value)
+                    outputlist.push(value)
+                }
+            })
 
             console.log(outputlist)
         }
@@ -170,11 +190,23 @@ class UpfileController extends Controller {
 
 
         //read text
-        var textlist
+        var textlist = []
         const stat3 = fs.statSync(path.join(basedir, `/resouce/output/`));
 
         if(stat3.isDirectory()){
-            textlist  = fs.readdirSync(path.join(basedir, `/resouce/text/`))
+            const textlist1  = fs.readdirSync(path.join(basedir, `/resouce/text/`))
+
+
+            const doc_label_text = doconfigone.doconfigone["doc_label_text"]
+
+            textlist1.forEach(function(value,index,array){
+                
+                if(value == doc_label_text)
+                {
+                    console.log(value)
+                    textlist.push(value)
+                }
+            })
 
             console.log(textlist)
         }
@@ -187,7 +219,7 @@ class UpfileController extends Controller {
 
         //read image
 
-        var imagelist
+        var imagelist = []
         
         // fs.exists(path.join(basedir, `/resouce/image/`+ imagedir + "/"),function(exists){
         //     if(exists){
@@ -241,11 +273,23 @@ class UpfileController extends Controller {
 
 
         //read excel
-        var excellist
+        var excellist = []
         const stat5 = fs.statSync(path.join(basedir, `/resouce/excel/`));
 
         if(stat5.isDirectory()){
-            excellist  = fs.readdirSync(path.join(basedir, `/resouce/excel/`))
+            const excellist1 = fs.readdirSync(path.join(basedir, `/resouce/excel/`))
+
+
+            const doc_excel = doconfigone.doconfigone["doc_excel"]
+
+            excellist1.forEach(function(value,index,array){
+                
+                if(value == doc_excel)
+                {
+                    console.log(value)
+                    excellist.push(value)
+                }
+            })
 
             console.log(excellist)
 
@@ -258,7 +302,7 @@ class UpfileController extends Controller {
 
 
         //read attach
-        var attachlist
+        var attachlist = []
 
         // fs.exists(path.join(basedir, `/resouce/attachment/`+ attachdir + "/"),function(exists){
         //     if(exists){
@@ -374,6 +418,9 @@ class UpfileController extends Controller {
 
     async fileupload(){
 
+        // egg-multipart有对上传文件的后缀名限制的白名单(whitelist),
+        // 可以在egg-multipart/config/config-default.js中对fileExtensions进行扩展，详见github egg-multipart中的介绍 
+
         const upfiles = this.ctx.request.files
 
         console.log(this.ctx.query)
@@ -391,6 +438,8 @@ class UpfileController extends Controller {
 
         const basedir = this.config.baseDir
 
+        var msg = "successful"
+        var returncode = 0
 
         if(this.ctx.query.type == "template")
         {
@@ -404,8 +453,22 @@ class UpfileController extends Controller {
     
                 //write file
                 
+                const doc_template = doconfigone.doconfigone["doc_template"]
+
+                // console.log(doc_template)
+
+                // console.log(value.filename)
+
+                if(doc_template == value.filename)
+                {
+                    fs.writeFileSync(path.join(basedir, `/resouce/template/`+value.filename), filedata)
+                }
+                else{
+                    msg = "上传模板文件与配置表名称不同"
+                    returncode = 1
+                }
     
-                fs.writeFileSync(path.join(basedir, `/resouce/template/`+value.filename), filedata)
+                
     
     
     
@@ -425,7 +488,17 @@ class UpfileController extends Controller {
                 //write file
                 
     
-                fs.writeFileSync(path.join(basedir, `/resouce/text/`+value.filename), filedata)
+                const doc_label_text = doconfigone.doconfigone["doc_label_text"]
+
+
+                if(doc_label_text == value.filename)
+                {
+                    fs.writeFileSync(path.join(basedir, `/resouce/text/`+value.filename), filedata)
+                }
+                else{
+                    msg = "上传文本文件与配置表中名称不同"
+                    returncode = 1
+                }
     
     
     
@@ -447,6 +520,8 @@ class UpfileController extends Controller {
                 
     
                 fs.writeFileSync(path.join(basedir, `/resouce/image/`+imagedir + "/"+value.filename), filedata)
+
+                
     
     
     
@@ -466,7 +541,20 @@ class UpfileController extends Controller {
                 //write file
                 
     
-                fs.writeFileSync(path.join(basedir, `/resouce/excel/`+value.filename), filedata)
+                
+
+
+                const doc_excel = doconfigone.doconfigone["doc_excel"]
+
+
+                if(doc_excel == value.filename)
+                {
+                    fs.writeFileSync(path.join(basedir, `/resouce/excel/`+value.filename), filedata)
+                }
+                else{
+                    msg = "excel文件与配置表中名称不同"
+                    returncode = 1
+                }
     
     
     
@@ -496,8 +584,7 @@ class UpfileController extends Controller {
         
 
         //return 
-        var msg = "successful"
-        var returncode = 0
+        
         var returndata = {
         data: upfiles,
         msg: msg,

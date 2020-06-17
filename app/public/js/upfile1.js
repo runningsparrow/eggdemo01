@@ -257,6 +257,9 @@ $("#formdatasub").click(
         if(formdata1.entries().next().done)
         {
             console.log("formdata1 no entry")
+            $("#doctemplatesubstatus").empty()
+            var one = "<div>"+"未选择文件"+"</div>"
+            $("#doctemplatesubstatus").append(one)
         }
         else{
             console.log("formdata1 has entry")
@@ -278,9 +281,18 @@ $("#formdatasub").click(
                 processData:false,
                 success:function(data){
                     console.log(data)
+
                     $("#doctemplatesubstatus").empty()
-                    var one = "<div>"+"上传成功"+"</div>"
-                    $("#doctemplatesubstatus").append(one)
+                    if(data.returncode == 0)
+                    {
+                        var one = "<div>"+"上传成功"+"</div>"
+                        $("#doctemplatesubstatus").append(one)
+                    }
+                    else{
+                        var one = "<div>"+data.msg+"</div>"
+                        $("#doctemplatesubstatus").append(one)
+                    }
+                        
                     
                 },
                 error:function(jqXHR){
@@ -295,6 +307,9 @@ $("#formdatasub").click(
         if(formdata2.entries().next().done)
         {
             console.log("formdata2 no entry")
+            $("#inputdoc_label_textsubstatus").empty()
+            var one = "<div>"+"未选择文件"+"</div>"
+            $("#inputdoc_label_textsubstatus").append(one)
         }
         else{
             console.log("formdata2 has entry")
@@ -311,8 +326,18 @@ $("#formdatasub").click(
                 success:function(data){
                     console.log(data)
                     $("#inputdoc_label_textsubstatus").empty()
-                    var one = "<div>"+"上传成功"+"</div>"
-                    $("#inputdoc_label_textsubstatus").append(one)
+                    if(data.returncode == 0)
+                    {
+                        console.log("text bug1 ")
+                        var one = "<div>"+"上传成功"+"</div>"
+                        $("#inputdoc_label_textsubstatus").append(one)
+                    }
+                    else{
+                        console.log("text bug2 ")
+                        var one = "<div>"+data.msg+"</div>"
+                        $("#inputdoc_label_textsubstatus").append(one)
+                    }
+                    
                     
                 },
                 error:function(jqXHR){
@@ -327,6 +352,9 @@ $("#formdatasub").click(
         if(formdata3.entries().next().done)
         {
             console.log("formdata3 no entry")
+            $("#inputdoc_image_dirsubstatus").empty()
+            var one = "<div>"+"未选择文件"+"</div>"
+            $("#inputdoc_image_dirsubstatus").append(one)
         }
         else{
             console.log("formdata3 has entry")
@@ -343,14 +371,14 @@ $("#formdatasub").click(
                 processData:false,
                 success:function(data){
                     console.log(data)
-                    $("#inputdoc_label_textsubstatus").empty()
+                    $("#inputdoc_image_dirsubstatus").empty()
                     var one = "<div>"+"上传成功"+"</div>"
                     $("#inputdoc_image_dirsubstatus").append(one)
                     
                 },
                 error:function(jqXHR){
                     console.log(JSON.stringify(jqXHR));
-                    $("#inputdoc_label_textsubstatus").empty()
+                    $("#inputdoc_image_dirsubstatus").empty()
                     var one = "<div>"+"上传失败"+"</div>"
                     $("#inputdoc_image_dirsubstatus").append(one)
                 } 
@@ -360,6 +388,9 @@ $("#formdatasub").click(
         if(formdata4.entries().next().done)
         {
             console.log("formdata4 no entry")
+            $("#inputdoc_excelstatus").empty()
+            var one = "<div>"+"未选择文件"+"</div>"
+            $("#inputdoc_excelstatus").append(one)
         }
         else{
             console.log("formdata4 has entry")
@@ -375,14 +406,22 @@ $("#formdatasub").click(
                 processData:false,
                 success:function(data){
                     console.log(data)
-                    $("#inputdoc_label_textsubstatus").empty()
-                    var one = "<div>"+"上传成功"+"</div>"
-                    $("#inputdoc_excelstatus").append(one)
+                    $("#inputdoc_excelstatus").empty()
+                    if(data.returncode == 0)
+                    {
+                        var one = "<div>"+"上传成功"+"</div>"
+                        $("#inputdoc_excelstatus").append(one)
+                    }
+                    else{
+                        var one = "<div>"+data.msg+"</div>"
+                        $("#inputdoc_excelstatus").append(one)
+                    }
+                    
                     
                 },
                 error:function(jqXHR){
                     console.log(JSON.stringify(jqXHR));
-                    $("#inputdoc_label_textsubstatus").empty()
+                    $("#inputdoc_excelstatus").empty()
                     var one = "<div>"+"上传失败"+"</div>"
                     $("#inputdoc_excelstatus").append(one)
                 } 
@@ -393,6 +432,9 @@ $("#formdatasub").click(
         if(formdata5.entries().next().done)
         {
             console.log("formdata5 no entry")
+            $("#inputdoc_attach_dirstatus").empty()
+            var one = "<div>"+"未选择文件"+"</div>"
+            $("#inputdoc_attach_dirstatus").append(one)
         }
         else{
             console.log("formdata5 has entry")
@@ -408,14 +450,14 @@ $("#formdatasub").click(
                 processData:false,
                 success:function(data){
                     console.log(data)
-                    $("#inputdoc_label_textsubstatus").empty()
+                    $("#inputdoc_attach_dirstatus").empty()
                     var one = "<div>"+"上传成功"+"</div>"
                     $("#inputdoc_attach_dirstatus").append(one)
                     
                 },
                 error:function(jqXHR){
                     console.log(JSON.stringify(jqXHR));
-                    $("#inputdoc_label_textsubstatus").empty()
+                    $("#inputdoc_attach_dirstatus").empty()
                     var one = "<div>"+"上传失败"+"</div>"
                     $("#inputdoc_attach_dirstatus").append(one)
                 } 
