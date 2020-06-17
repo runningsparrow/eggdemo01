@@ -76,6 +76,10 @@ module.exports = appInfo => {
      
       cron: '0 30 4 * * *',  // 自动清除时间
     },
+    fileExtensions:[       //新增文件类型  fileExtensions属性为 whilelist 新增文件白名单  此处支持 .xlsx 后缀文件
+      '.xlsx',
+      '.docx'
+    ]
   };
   
 
