@@ -28,6 +28,8 @@ module.exports = app => {
 
   router.post('/dirbuild', controller.upfile.dirbuild); 
 
+  router.post('/clearfile', controller.upfile.clearfile); 
+
 
 
   router.get('/guide', controller.guide.index);

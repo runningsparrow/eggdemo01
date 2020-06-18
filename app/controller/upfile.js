@@ -23,6 +23,38 @@ class UpfileController extends Controller {
     }
 
 
+    async clearfile(){
+        var postdata = this.ctx.request.body;
+
+        var doconfigone = await this.ctx.service.doconfig.findone(postdata.docname)
+
+
+        const imagedir = doconfigone.doconfigone["doc_image_dir"]
+        const attachdir = doconfigone.doconfigone["doc_attach_dir"]
+
+
+        const basedir = this.config.baseDir
+
+
+        var msg = ""
+        var returncode = 0
+
+        var returndata = {}
+
+        
+
+
+        var returndata = {
+            data: returndata,
+            msg: msg,
+            returncode:returncode
+        }
+        this.ctx.body=returndata;
+
+
+    }
+
+
     async dirbuild(){
         var postdata = this.ctx.request.body;
 

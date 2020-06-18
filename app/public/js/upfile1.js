@@ -137,6 +137,33 @@ $("#inputdoc_attach_dir").change(
     }
 )
 
+
+$("btnclearfile").click(function(){
+
+    console.log("btnclearfile")
+    $.ajax({
+        url:"/clearfile",
+        type:"POST",
+        contentType:"application/json;charset=utf-8",
+        data:JSON.stringify({docname:$('#slpk').selectpicker('val'),_csrf:this.value}),
+        dataType:"json",
+        success:function(data){
+            console.log("clear file successful")
+            console.log(data)
+
+        },
+        error:function(data){
+            console.log("clear file fail")
+            console.log(data)
+
+
+        }
+
+    })
+
+});
+
+
 $("#builddir").click(
     function(){
         console.log("dirbuild")
