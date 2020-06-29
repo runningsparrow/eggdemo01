@@ -138,7 +138,7 @@ $("#inputdoc_attach_dir").change(
 )
 
 
-$("btnclearfile").click(function(){
+$("#btnclearfile").click(function(){
 
     console.log("btnclearfile")
     $.ajax({

@@ -24,6 +24,8 @@ class UpfileController extends Controller {
 
 
     async clearfile(){
+
+        console.log("start clear file")
         var postdata = this.ctx.request.body;
 
         var doconfigone = await this.ctx.service.doconfig.findone(postdata.docname)
@@ -35,6 +37,231 @@ class UpfileController extends Controller {
 
         const basedir = this.config.baseDir
 
+
+        //clear template
+
+        const stat1 = fs.statSync(path.join(basedir, `/resouce/template/`));
+
+        console.log(stat1.isDirectory())
+
+        
+
+        
+
+
+        if(stat1.isDirectory()){
+
+            // console.log("bug1")
+            const templatelist1  = fs.readdirSync(path.join(basedir, `/resouce/template/`))
+
+            const doc_template = doconfigone.doconfigone["doc_template"]
+
+            templatelist1.forEach(function(value,index,array){
+                
+                if(value == doc_template)
+                {
+
+                    //clear file
+                    console.log(value)
+
+                    fs.unlinkSync(path.join(basedir, `/resouce/template/`+value))
+                    
+                    console.log("template" +  file + " deleted! ")
+
+                    
+                }
+            })
+
+           
+        }
+        else{
+            console.log("no template file  delete!")
+        }
+
+
+        //clear output
+
+
+
+        const stat2 = fs.statSync(path.join(basedir, `/resouce/output/`));
+
+        if(stat2.isDirectory()){
+            const outputlist1  = fs.readdirSync(path.join(basedir, `/resouce/output/`))
+
+            const doc_outpath = doconfigone.doconfigone["doc_outpath"]
+
+            outputlist1.forEach(function(value,index,array){
+                
+                if(value == doc_outpath)
+                {
+                    console.log(value)
+
+                    fs.unlinkSync(path.join(basedir, `/resouce/output/`+value))
+                    
+                    console.log("output " + file + " deleted! ")
+
+                }
+            })
+
+            
+        }
+        else{
+            console.log("no output file delete!")
+        }
+
+
+
+
+        //clear text
+
+       
+        const stat3 = fs.statSync(path.join(basedir, `/resouce/output/`));
+
+        if(stat3.isDirectory()){
+            const textlist1  = fs.readdirSync(path.join(basedir, `/resouce/text/`))
+
+
+            const doc_label_text = doconfigone.doconfigone["doc_label_text"]
+
+            textlist1.forEach(function(value,index,array){
+                
+                if(value == doc_label_text)
+                {
+                    console.log(value)
+
+                    fs.unlinkSync(path.join(basedir, `/resouce/text/`+value))
+                    
+                    console.log("text " + file + " deleted! ")
+                    
+                }
+            })
+
+           
+        }
+        else{
+            console.log("no text file delete!")
+        }
+
+        
+
+        //clear image
+
+
+        var imagelist = []
+        
+        var imageexists = fs.existsSync(path.join(basedir, `/resouce/image/`+ imagedir + "/"))
+        if(imageexists){
+            console.log("图片目录存在")
+
+            const stat4 = fs.statSync(path.join(basedir, `/resouce/image/`+ imagedir + "/"));
+
+            if(stat4.isDirectory()){
+
+                console.log("bug image")
+                imagelist  = fs.readdirSync(path.join(basedir, `/resouce/image/`+ imagedir + "/"))
+
+                console.log(imagelist)
+
+                //clear
+                imagelist.forEach(function(value,index,array){
+
+
+                    fs.unlinkSync(path.join(basedir, `/resouce/image/`+ imagedir + "/"+value))
+
+                    console.log("image " + path.join(basedir, `/resouce/image/`+ imagedir + "/"+value) + " deleted")
+
+                });
+
+                
+
+            }
+            else{
+                imagelist = []
+            }
+
+        }
+        if(!imageexists){
+            console.log("图片目录不存在")
+            imagelist = []
+        }
+
+
+        //clear excel
+
+
+        const stat5 = fs.statSync(path.join(basedir, `/resouce/excel/`));
+
+        if(stat5.isDirectory()){
+            const excellist1 = fs.readdirSync(path.join(basedir, `/resouce/excel/`))
+
+
+            const doc_excel = doconfigone.doconfigone["doc_excel"]
+
+            excellist1.forEach(function(value,index,array){
+                
+                if(value == doc_excel)
+                {
+                    console.log(value)
+
+                    fs.unlinkSync(path.join(basedir, `/resouce/excel/`+value))
+                    
+                    console.log("excel " + file + " deleted! ")
+
+                }
+            })
+
+
+
+        }
+        else{
+            console.log("no excel file delete!")
+        }
+
+
+
+        //clear attachment
+        var attachlist = []
+
+
+        var attachexists = fs.existsSync(path.join(basedir, `/resouce/attachment/`+ attachdir + "/"))
+        if(attachexists){
+            console.log("附件存在")
+
+
+            const stat6 = fs.statSync(path.join(basedir, `/resouce/attachment/`+ attachdir + "/"));
+
+            if(stat6.isDirectory()){
+                attachlist  = fs.readdirSync(path.join(basedir, `/resouce/attachment/`+ attachdir + "/"))
+
+                console.log(attachlist)
+
+                //clear
+                attachlist.forEach(function(value,index,array){
+
+
+                    fs.unlinkSync(path.join(basedir, `/resouce/image/`+ attachdir + "/"+value))
+
+                    console.log("attachment " + path.join(basedir, `/resouce/image/`+ attachdir + "/"+value) + " deleted")
+
+                });
+        
+
+            }
+            else{
+                attachlist = []
+            }
+        }
+        if(!attachexists){
+            console.log("附件不存在")
+            attachlist = []
+        }
+
+
+
+
+
+
+        ///////////////////
 
         var msg = ""
         var returncode = 0
@@ -289,6 +516,7 @@ class UpfileController extends Controller {
                 imagelist  = fs.readdirSync(path.join(basedir, `/resouce/image/`+ imagedir + "/"))
 
                 console.log(imagelist)
+                
 
             }
             else{
