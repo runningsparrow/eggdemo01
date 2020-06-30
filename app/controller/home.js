@@ -67,29 +67,42 @@ class HomeController extends Controller {
 
     await console.log(postdata);
 
+    await console.log("======================")
+
+    retruncode1 = checkcodition()
+
+    if(returncode1 == 0)
+    {
+      //run python 
+      var para = postdata.docname
+      // var ppath = 'python '+this.config.pythonpath+'docquery.py '
+
+      var ppath = 'python '+this.config.pythonpath+'docmaker.py '
+
+      var workerProcess = await child_process.exec(ppath+para, 
+          function (error, stdout, stderr) {
+          if (error) {
+              console.log("debug")
+              console.log(error.stack);
+              console.log('Error code: '+error.code);
+              console.log('Signal received: '+error.signal);
+          }
+          console.log('stdout: ' + stdout);
+          console.log('stderr: ' + stderr);
+        });
+
+
+      var msg = "successful"
+      var returncode = 0
+    }
+    else{
+
+      var msg = "fail"
+      var returncode = 1
+
+    }
+
     
-
-    //run python 
-    var para = postdata.docname
-    // var ppath = 'python '+this.config.pythonpath+'docquery.py '
-
-    var ppath = 'python '+this.config.pythonpath+'docmaker.py '
-
-    var workerProcess = await child_process.exec(ppath+para, 
-        function (error, stdout, stderr) {
-        if (error) {
-            console.log("debug")
-            console.log(error.stack);
-            console.log('Error code: '+error.code);
-            console.log('Signal received: '+error.signal);
-        }
-        console.log('stdout: ' + stdout);
-        console.log('stderr: ' + stderr);
-      });
-
-
-    var msg = "successful"
-    var returncode = 0
     var returndata = {
       data: postdata,
       msg: msg,
@@ -97,9 +110,27 @@ class HomeController extends Controller {
     }
     // this.ctx.body=returndata;
 
-    await this.ctx.render('home',{
-      returndata
-    });
+    // await this.ctx.render('home',{
+    //   returndata
+    // });
+
+    this.ctx.body = returndata;
+
+  }
+
+
+  async checkcodition(docname){
+
+    var doconfigone = await this.ctx.service.doconfig.findone(docname)
+
+    const imagedir = doconfigone.doconfigone["doc_image_dir"]
+    const attachdir = doconfigone.doconfigone["doc_attach_dir"]
+
+
+    const basedir = this.config.baseDir
+
+
+    
 
   }
 
