@@ -66,7 +66,7 @@ class UpfileController extends Controller {
 
                     fs.unlinkSync(path.join(basedir, `/resouce/template/`+value))
                     
-                    console.log("template" +  file + " deleted! ")
+                    console.log("template" +  path.join(basedir, `/resouce/template/`+value) + " deleted! ")
 
                     
                 }
@@ -98,7 +98,7 @@ class UpfileController extends Controller {
 
                     fs.unlinkSync(path.join(basedir, `/resouce/output/`+value))
                     
-                    console.log("output " + file + " deleted! ")
+                    console.log("output " + path.join(basedir, `/resouce/output/`+value) + " deleted! ")
 
                 }
             })
@@ -131,7 +131,7 @@ class UpfileController extends Controller {
 
                     fs.unlinkSync(path.join(basedir, `/resouce/text/`+value))
                     
-                    console.log("text " + file + " deleted! ")
+                    console.log("text " + path.join(basedir, `/resouce/text/`+value) + " deleted! ")
                     
                 }
             })
@@ -205,7 +205,7 @@ class UpfileController extends Controller {
 
                     fs.unlinkSync(path.join(basedir, `/resouce/excel/`+value))
                     
-                    console.log("excel " + file + " deleted! ")
+                    console.log("excel " + path.join(basedir, `/resouce/excel/`+value) + " deleted! ")
 
                 }
             })
@@ -239,9 +239,9 @@ class UpfileController extends Controller {
                 attachlist.forEach(function(value,index,array){
 
 
-                    fs.unlinkSync(path.join(basedir, `/resouce/image/`+ attachdir + "/"+value))
+                    fs.unlinkSync(path.join(basedir, `/resouce/attachment/`+ attachdir + "/"+value))
 
-                    console.log("attachment " + path.join(basedir, `/resouce/image/`+ attachdir + "/"+value) + " deleted")
+                    console.log("attachment " + path.join(basedir, `/resouce/attachment/`+ attachdir + "/"+value) + " deleted")
 
                 });
         

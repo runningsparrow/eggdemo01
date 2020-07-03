@@ -1,5 +1,7 @@
 'use strict';
 
+const fs = require('fs')
+const path = require('path')
 const Controller = require('egg').Controller;
 
 const child_process = require('child_process');
@@ -69,9 +71,15 @@ class HomeController extends Controller {
 
     await console.log("======================")
 
-    retruncode1 = checkcodition()
+    var retruncode1 = await this.checkcodition(postdata.docname)
 
-    if(returncode1 == 0)
+    //returncode1 = 1 other error
+    //returncode1 = 2 no template
+
+    console.log("检查返回码")
+    console.log(retruncode1)
+
+    if(retruncode1 == 0)
     {
       //run python 
       var para = postdata.docname
@@ -92,13 +100,13 @@ class HomeController extends Controller {
         });
 
 
-      var msg = "successful"
+      var msg = "处理成功！"
       var returncode = 0
     }
     else{
 
-      var msg = "fail"
-      var returncode = 1
+      var msg = "读取模板失败！"
+      var returncode = retruncode1
 
     }
 
@@ -119,7 +127,7 @@ class HomeController extends Controller {
   }
 
 
-  async checkcodition(docname){
+  checkcodition = async function(docname){
 
     var doconfigone = await this.ctx.service.doconfig.findone(docname)
 
@@ -130,7 +138,50 @@ class HomeController extends Controller {
     const basedir = this.config.baseDir
 
 
+
+    //read template
+
+
+        
+
+    const stat1 = fs.statSync(path.join(basedir, `/resouce/template/`));
+
+    console.log(stat1.isDirectory())
+
+    //init
+    var checkreturncode = 2
+
     
+
+
+    if(stat1.isDirectory()){
+
+        // console.log("bug1")
+        const templatelist1  = fs.readdirSync(path.join(basedir, `/resouce/template/`))
+
+        const doc_template = doconfigone.doconfigone["doc_template"]
+
+        templatelist1.forEach(function(value,index,array){
+            
+            if(value == doc_template)
+            {
+                console.log(value)
+                checkreturncode = 0
+            }
+        })
+
+        
+    }
+    else{
+      checkreturncode = 1
+    }
+
+
+    console.log(checkreturncode)
+
+    return checkreturncode
+
+
 
   }
 

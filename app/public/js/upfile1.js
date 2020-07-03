@@ -151,10 +151,20 @@ $("#btnclearfile").click(function(){
             console.log("clear file successful")
             console.log(data)
 
+            if(data.returncode == 0)
+            {
+                alert("清理完成")
+            }
+            else{
+                alert("未清理文件")
+            }
+
         },
         error:function(data){
             console.log("clear file fail")
             console.log(data)
+
+            alert("清理出错")
 
 
         }
