@@ -156,3 +156,7 @@ $("#repairdocform").validate({
     }
     
 })
+
+$(".downoutput").on('click', (event)=>{
+    console.log(event.target.attributes.name)
+})

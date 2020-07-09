@@ -175,7 +175,7 @@ var tree = [
 		   }
 		 },
 		 {
-			text: "上传文件",
+			text: "检查和上传文件",
 			icon: "fa fa-cube",
 			href:"/upfile",
 		 state: {
