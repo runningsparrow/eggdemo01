@@ -15,6 +15,9 @@ module.exports = app => {
 
   router.post('/deletedoc', controller.home.deletedoc);
 
+  router.post('/downloadout',controller.home.downloadout)
+  // router.get('/downloadout',controller.home.downloadout)
+
 
   router.get('/newdoc', controller.newdoc.index);
 
@@ -29,6 +32,8 @@ module.exports = app => {
   router.post('/dirbuild', controller.upfile.dirbuild); 
 
   router.post('/clearfile', controller.upfile.clearfile); 
+
+  
 
 
 

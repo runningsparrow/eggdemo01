@@ -2,6 +2,7 @@
 
 const fs = require('fs')
 const path = require('path')
+const util = require('util');
 const Controller = require('egg').Controller;
 
 const child_process = require('child_process');
@@ -59,6 +60,39 @@ class HomeController extends Controller {
   }
 
 
+
+  //下载
+
+  async downloadout(){
+
+    //get file path 
+    await console.log("fdsafsdaf")
+    var postdata = this.ctx.request.body;
+    
+    await console.log(postdata)
+
+    await console.log(this.ctx.query)
+
+    
+
+
+    //process download 
+    const basedir = this.config.baseDir
+
+    // const filepath = path.join(basedir, `/resouce/output/`+postdata.docname)
+    const filepath = path.join(basedir, `/resouce/output/`+this.ctx.query.docname)
+    const filesize = (await util.promisify(fs.stat)(filepath)).size.toString();
+    console.log(filesize)
+    this.ctx.attachment(filepath);
+    this.ctx.set('Content-Length', filesize);
+    // this.ctx.set('Content-Type', 'application/octet-stream');
+    this.ctx.set('Content-Type', 'application/msword');
+    console.log(fs.createReadStream(filepath))
+    this.ctx.body = fs.createReadStream(filepath);
+
+
+  }
+
   async makedoc() {
 
     //get方式
@@ -66,6 +100,8 @@ class HomeController extends Controller {
 
     //post方式
     var postdata = this.ctx.request.body;
+
+    
 
     await console.log(postdata);
 
