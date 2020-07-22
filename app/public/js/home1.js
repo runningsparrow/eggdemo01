@@ -230,6 +230,10 @@ $(".downoutput").on('click', (event)=>{
                 $(a).remove();
             }
         }
+        else{
+            console.log("文件状态异常，下载失败！")
+            alert("文件状态异常，下载失败")
+        }
     };
     // 发送ajax请求
     xhr.send()

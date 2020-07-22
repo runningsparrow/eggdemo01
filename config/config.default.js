@@ -83,6 +83,14 @@ module.exports = appInfo => {
   };
   
 
+  //added on 20200722
+  config.cluster = {
+    listen: {
+      port: 7002,
+      hostname: '0.0.0.0',
+    }
+  }
+
 
   // add your user config here
   const userConfig = {
